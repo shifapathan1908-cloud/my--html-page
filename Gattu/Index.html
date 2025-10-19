@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday!</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Pacifico&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ffe6f0, #e6f0ff);
+      min-height: 100vh;
+      overflow-x: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    /* ===== Loading Screen ===== */
+    #loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #ffd6e0, #d6e0ff);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Pacifico', cursive;
+      font-size: 3rem;
+      color: #ff66a3;
+      z-index: 1000;
+      transition: opacity 1s ease;
+    }
+
+    #countdown-number {
+      font-size: 5rem;
+      margin-top: 10px;
+      animation: pop 1s infinite ease-in-out;
+    }
+
+    @keyframes pop {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    /* ===== Main Content ===== */
+    #main-content {
+      display: none;
+      opacity: 0;
+      transition: opacity 1s ease;
+      width: 100%;
+      max-width: 1100px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      color: #ff66a3;
+      font-size: 3rem;
+      margin-top: 20px;
+      animation: bounce 2s infinite ease-in-out;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .hero-img {
+      width: 260px;
+      margin-top: 10px;
+      border-radius: 20px;
+      animation: fadeIn 2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .caption-box {
+      background: white;
+      border-radius: 40px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      padding: 25px 35px;
+      margin: 30px auto;
+      max-width: 480px;
+      animation: fadeIn 3s ease;
+    }
+
+    .caption-box p {
+      color: #555;
+      font-size: 1.2rem;
+      margin: 0;
+    }
+
+    /* ===== Gallery (3x3 grid, 6 ovals) ===== */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 60px; /* increased spacing between cards */
+      justify-items: center;
+      align-items: center;
+      margin: 60px auto;
+      max-width: 1000px;
+    }
+
+    .card {
+      width: 280px;   /* increased card width */
+      height: 250px;  /* increased card height */
+      perspective: 1000px;
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+
+    .card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front,
+    .card-back {
+      position: absolute;
+      width: 110%;
+      height: 110%;
+      border-radius: 70px 80px 65px 80px / 80px 70px 75px 65px; /* smoother oval */
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      background: white;
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card-front img {
+      width: 85%;
+      border-radius: 50%;
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+      background: linear-gradient(135deg, #ffd6e0, #d6e0ff);
+      color: #ff4da6;
+      font-weight: bold;
+      padding: 25px;
+      text-align: center;
+      font-size: 1rem;
+    }
+
+    footer {
+      margin: 40px 0 10px;
+      color: #888;
+      font-size: 0.9rem;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 800px) {
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .gallery {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+      h1 { font-size: 2.2rem; }
+      .caption-box { max-width: 90%; }
+      .card { width: 300px; height: 260px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Countdown Screen ===== -->
+  <div id="loading-screen">
+    <div>Get ready... 🎉</div>
+    <div id="countdown-number">3</div>
+  </div>
+
+  <!-- ===== Main Page ===== -->
+  <div id="main-content">
+    <h1>Happy Birthday Gattu 😽❤️</h1>
+    <img class="hero-img" src="C:\Gattu/gattu.jpeg" alt="Birthday Photo">
+
+    <div class="caption-box">
+      <p>We all love you so much 🥺❤️</p>
+    </div>
+
+    <!-- 3x3 Grid with 6 Cloud Boxes that Flip -->
+    <div class="gallery">
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="C:\Gattu/juw.jpeg" alt="Cake">
+          </div>
+          <div class="card-back">
+            There’s so much I want to say, but I don’t even know where to start. You know me better than anyone my secrets, my heart, everything. We’ve had our ups and downs, but we never gave up on each other. You light up every room, love deeply, and stand by me through every season. I’m so grateful for you and can’t imagine my life without you. ❤️
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="C:\Gattu/sara.jpeg" alt="Sara">
+           </div>
+          <div class="card-back">
+            Sometimes I wonder how I got so lucky to have you, You understand me in ways no one else does.  
+            I don’t say it often enough, but having you in my life makes everything better.  
+            Every memory with you is a gift, every conversation a comfort.  
+            I just hope you know how deeply you’re loved and appreciated, not just today, but always.
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="C:\Gattu/diya.jpeg" alt="Confetti">
+          </div>
+          <div class="card-back">
+            To my strongest girl! You’ve seen every phase of mine with me and may we both be the same till 60 more years❤️
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="C:\Gattu/shifa.jpeg" alt="Gift">
+          </div>
+          <div class="card-back">
+            Here’s to 12 years of friendship and many more to come! You are the most special person to me, and I’m forever grateful to have someone like you in my life. Thank you for always being there for me and listening to me you’re the strongest person I know. You understand me in a way no one else ever could. I love you so much, Khala 🥺❤️
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="C:\Gattu/swarali.jpeg" alt="Party Hat">
+          </div>
+          <div class="card-back">
+          There are people who walk into your life and change it forever you are that person for me. I can’t count the number of times you’ve saved me I love you more than the biggest slice of pizza
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="C:\Gattu/jhalak.jpeg" alt="Cupcake">
+          </div>
+          <div class="card-back">
+            happybirthday my nonstop yapper you have been such an amazing friend to me , you were and are loved always . I have seen you soo naive back then  and turning into sucha ass now is the thing i cherrrish the most . You have a great heart really thankyou for being the reason behind soo many memories i eish to hold and call on you forever
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>With Love 💖 To Our Yapper😋</footer>
+  </div>
+
+  <script>
+    // Countdown before showing main page
+    let countdown = 3;
+    const countdownNumber = document.getElementById("countdown-number");
+    const loadingScreen = document.getElementById("loading-screen");
+    const mainContent = document.getElementById("main-content");
+
+    const countdownInterval = setInterval(() => {
+      countdown--;
+      if (countdown <= 0) {
+        clearInterval(countdownInterval);
+        loadingScreen.style.opacity = "0";
+        setTimeout(() => {
+          loadingScreen.style.display = "none";
+          mainContent.style.display = "block";
+          setTimeout(() => (mainContent.style.opacity = "1"), 100);
+        }, 1000);
+      } else {
+        countdownNumber.textContent = countdown;
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
